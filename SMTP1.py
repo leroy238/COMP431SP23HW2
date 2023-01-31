@@ -1,4 +1,5 @@
 #Justin Smith, COMP 431
+#I pledge the honor code.
 
 import string
 import sys
@@ -103,8 +104,6 @@ def name(index):
         letDigIndex = letDigStr(index)
         if letDigIndex > index:
             return letDigIndex
-    #else:
-    #    printError501()
     return -1
 
 def element(index):
@@ -113,7 +112,6 @@ def element(index):
         letterIndex += 1
 
     if letterIndex == index:
-        #printError501()
         return -1
 
     nameIndex = name(index)
@@ -147,8 +145,6 @@ def localPart(index):
     stringIndex = indexString(index)
     if stringIndex > index:
         return stringIndex
-    #else:
-        #printError501()
     return -1
 
 def mailbox(index):
@@ -160,8 +156,6 @@ def mailbox(index):
                 return domainIndex
             else:
                 return -1
-        #else:
-            #printError501()
     return -1
 
 def path(index):
@@ -171,12 +165,8 @@ def path(index):
         if mailIndex > index:
             if curr_message[mailIndex] == '>':
                 return mailIndex + 1
-            #else:
-                #printError501()
         else:
             return -1
-    #else:
-        #printError501()
     return -1
 
 def reversePath(index):
@@ -209,7 +199,6 @@ def is2PartMessage(array1, array2):
 
     if index == len(array1):
         if index >= len(curr_message):
-            #printError501()
             return -2
 
         whitespaceIndex = whitespace(index)
@@ -217,7 +206,6 @@ def is2PartMessage(array1, array2):
         if whitespaceIndex > index:
             index = whitespaceIndex
         else:
-            #printError501()
             return -2
 
         for character in array2:
@@ -225,10 +213,8 @@ def is2PartMessage(array1, array2):
                 index += 1
 
         if index - whitespaceIndex != len(array2):
-            #printError500()
             return -1
     else:
-        #printError500()
         return -1
 
     return index
