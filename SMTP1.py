@@ -244,7 +244,7 @@ def isMailFromCMD():
     if index < 9:
         return (False, 500)
     
-    full_message = "FROM: "
+    full_message = "From: "
 
     nullIndex = isNullspace(index)
     if nullIndex >= index:
@@ -282,7 +282,7 @@ def isRcptToCMD():
     if index < 7:
         return (False, 500)
     else:
-        full_message += "TO: "
+        full_message += "To: "
 
     nullIndex = isNullspace(index)
     if nullIndex >= index:
@@ -325,6 +325,7 @@ def main():
                     errorCode = 503
         elif state == "Message":
             if line == ".\n":
+                print("test")
                 state = "Mail"
                 errorCode = 250
                 for address in addresses:
