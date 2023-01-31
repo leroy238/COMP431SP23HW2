@@ -30,7 +30,7 @@ def messageToFile(mailAddress):
     except Exception:
         file = open("forward/" + mailAddress, "x")
     finally:
-        file.write(full_message[:len(full_message)-1])
+        file.write(full_message)
         file.close()
 
 def isSpace(index):
