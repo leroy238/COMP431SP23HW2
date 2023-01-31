@@ -327,18 +327,17 @@ def main():
             mailValue = isMailFromCMD()
             if mailValue[0]:
                 state = "Rcpt/Data"
-                errorCode = mailValue[1]
-        if state == "Rcpt/Data":
+            errorCode = mailValue[1]
+        elif state == "Rcpt/Data":
             rcptValue = isRcptToCMD()
-            if rcptValue[0]:
-                errorCode = rcptValue[1]
+            errorCode = rcptValue[1]
             if isData():
                 if len(addresses) != 0:
                     state = "Message"
                     errorCode = 354
                 else:
                     errorCode = 503
-        if state == "Message":
+        elif state == "Message":
             if line == ".\n":
                 state = "Mail"
                 errorCode = 250
@@ -347,12 +346,15 @@ def main():
             else:
                 full_message += line
 
-        if errorCode == 500:
+        if errorCode == 500 and curr_message != "\n":
             printError500()
+            state = "Mail"
         elif errorCode == 503:
             printError503()
+            state = "Mail"
         elif errorCode == 501:
             printError501()
+            state = "Mail"
         elif errorCode == 250:
             print250()
         elif errorCode == 354:

@@ -1,0 +1,12 @@
+MAIL FROM:<jeffay@cs.unc.edu>
+RCPT T:
+MAIL FROM: <jeffay@cs.unc.edu>
+DATA
+MAIL FROM: <jeffay@cs.unc.edu>
+RCPT TO: <jeffay@cs.unc.edu>
+RCPT TO: <Jacob@jacob>
+RCPT TO: <J@.>
+MAIL FROM: <jeffay@cs>
+RCPT TO: <J@ja.u>
+DATA
+You SHALL NOT PASS.
