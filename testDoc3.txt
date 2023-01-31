@@ -1,1 +1,6 @@
-MAIL FROM:[jeffay@cs.unc.edu>
+MAIL FROM: <eof@cs.unc.edu>
+RCPT TO: <jeffay@cs.unc.edu>
+DATA
+In computing, end-of-file (EOF) is a condition in a computer operating system where no more data can be read from a data source. 
+The term is most commonly used for files, where it means that the file pointer is at the end of the file, and there is no more data to be read from the file. 
+In other cases, EOF may be used to indicate the end of a stream of data, such as a network connection.

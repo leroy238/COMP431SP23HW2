@@ -7,20 +7,29 @@ import sys
 curr_message = ""
 full_message = ""
 addresses = []
+finish_flag = False
 
 def printError500():
+    global finish_flag
+    finish_flag = True
     print("500 Syntax error: command unrecognized")
 
 def printError501():
+    global finish_flag
+    finish_flag = True
     print("501 Syntax error in parameters or arguments")
 
 def printError503():
+    global finish_flag
+    finish_flag = True
     print("503 Bad sequence of commands")
 
 def print250():
+    global finish_flag
     print("250 OK")
 
 def print354():
+    global finish_flag
     print("354 Start mail input; end with <CRLF>.<CRLF>")
 
 def messageToFile(mailAddress):
@@ -302,7 +311,7 @@ def isRcptToCMD():
         return (False, 501)
 
 def main():
-    global curr_message, full_message, addresses
+    global curr_message, full_message, addresses, finish_flag
     state = "Mail" # Valid states are "Mail", "Rcpt/Data", "Message"
     for line in sys.stdin:
         curr_message = line
@@ -312,6 +321,7 @@ def main():
         if state == "Mail":
             mailValue = isMailFromCMD()
             if mailValue[0]:
+                finish_flag = False
                 state = "Rcpt/Data"
             errorCode = mailValue[1]
         elif state == "Rcpt/Data":
@@ -325,6 +335,7 @@ def main():
                     errorCode = 503
         elif state == "Message":
             if line == ".\n":
+                finish_flag = True
                 state = "Mail"
                 errorCode = 250
                 for address in addresses:
@@ -345,5 +356,7 @@ def main():
             print250()
         elif errorCode == 354:
             print354()
+    if not(finish_flag):
+        printError501()
 
 main()
