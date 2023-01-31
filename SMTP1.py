@@ -325,7 +325,6 @@ def main():
                     errorCode = 503
         elif state == "Message":
             if line == ".\n":
-                print("test")
                 state = "Mail"
                 errorCode = 250
                 for address in addresses:
