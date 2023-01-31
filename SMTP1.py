@@ -253,7 +253,7 @@ def isMailFromCMD():
         if reverseIndex > index:
             index = reverseIndex
         else:
-            return (False, 500)
+            return (False, 501)
     else:
         return (False, 501)
 
@@ -261,7 +261,7 @@ def isMailFromCMD():
     if nullIndex >= index:
         index = nullIndex
     else:
-        return (False,500)
+        return (False,501)
     
     if isCRLF(index):
         return (True, 250)
@@ -288,7 +288,7 @@ def isRcptToCMD():
     if nullIndex >= index:
         index = nullIndex
     else:
-        return (False, 500)
+        return (False, 501)
 
     forwardIndex = forwardPath(index)
     if forwardIndex > index:
